@@ -23,15 +23,21 @@ float calculate_area_of_poly(const Point *const points, const int size) {
     return result;
 }
 
-int main() {
-    int number_of_points;
-    std::cin >> number_of_points;
-    Point * points = new Point[number_of_points];
-    for (int i=0; i < number_of_points; i++) {
+Point * create_poly(int * size) {
+    std::cin >> *size;
+    Point * points = new Point[*size];
+    for (int i=0; i < *size; i++) {
         std::cin >> points[i].x >> points[i].y;
     }
 
-    std::cout << calculate_area_of_poly(points, number_of_points) << std::endl;
+    return points;
+}
+
+
+int main() {
+    int size;
+    Point * points = create_poly(&size);
+    std::cout << calculate_area_of_poly(points, size) << std::endl;
 
     delete [] points;
     return 0;
