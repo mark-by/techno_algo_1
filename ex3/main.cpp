@@ -6,8 +6,8 @@ class Queue {
     public:
         explicit Queue(int size); 
         ~Queue() {delete[] buffer;}
-        Queue(const Queue<T>&); 
-        Queue(Queue<T>&&) = delete;
+        Queue(const Queue&); 
+        Queue(Queue&&) = delete;
         Queue& operator= (const Queue&) = delete;
         Queue& operator= (Queue&&) = delete;
         
@@ -80,7 +80,7 @@ void Queue<T>::realloc() {
 }
 
 template <class T>
-Queue<T>::Queue(const Queue<T>& other) {
+Queue<T>::Queue(const Queue& other) {
     buffer_size = other.buffer_size;
     buffer = new T[buffer_size];
     for (int i = 0; i < buffer_size; i++) {
