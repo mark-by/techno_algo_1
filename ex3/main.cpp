@@ -8,7 +8,7 @@ template <class T>
 class DynamicArray {
     public:
         DynamicArray(): size(0), capacity(INITIAL_CAPACITY) {buffer = new T[capacity];}
-        ~DynamicArray() {delete [] buffer;}
+        virtual ~DynamicArray() {delete [] buffer;}
         DynamicArray(const DynamicArray& other);
 
         void add(T element);
@@ -90,6 +90,9 @@ void DynamicArray<T>::grow() {
 
 template <class T>
 T& DynamicArray<T>::operator[](int index) {
+    if (index < 0 || index >= size){
+        throw std::out_of_range("Out of range");
+    }
     return buffer[index];
 }
 
@@ -112,7 +115,7 @@ void Queue<T>::push(T element) {
 
 template <class T>
 T Queue<T>::pop() {
-    if (head == tail) {
+    if (is_empty()) {
         return -1;
     }
     T result = buffer[head];
@@ -147,3 +150,4 @@ void test(Queue <T> queue) {
     }
     std::cout << "YES\n" << std::endl;
 }
+
