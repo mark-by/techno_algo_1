@@ -1,0 +1,19 @@
+#!/usr/bin/python3.8
+import random
+import sys
+
+if '-h' in sys.argv or '--help' in sys.argv:
+    print("Usage: ./script <size> <index>")
+    exit(0)
+
+MIN = -1000
+MAX = 1000
+
+size = int(sys.argv[1])
+k = int(sys.argv[2])
+array = [random.randint(-1000, 1000) for i in range(size)]
+array_str = ' '.join((str(element) for element in array))
+print(f"{size} {k}\n{array_str}")
+array.sort()
+array_str = ' '.join((str(element) for element in array))
+print(f"{array[k]}\n{array_str}")
