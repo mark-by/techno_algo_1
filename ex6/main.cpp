@@ -11,7 +11,7 @@ struct input_data {
         array = nullptr;
     }
     ~input_data() {
-        delete array;
+        delete [] array;
     }
 };
 
