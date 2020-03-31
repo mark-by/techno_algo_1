@@ -69,11 +69,11 @@ private:
 };
 
 struct input_data {
-    int amount;
+    int size;
     DynamicArray<int> fruits_mass;
     int carrying;
     input_data() {
-        amount = 0;
+        size = 0;
         carrying = 0;
     }
 };
@@ -288,9 +288,9 @@ T& DynamicArray<T>::operator[](int index) {
 // END DYNAMIC ARRAY REALIZATION
 
 void input(input_data &data) {
-    std::cin >> data.amount;
+    std::cin >> data.size;
     int temp;
-    for (int i=0; i < data.amount; i++ ) {
+    for (int i=0; i < data.size; i++ ) {
         std::cin >> temp;
         data.fruits_mass.add(temp);
     }
